@@ -1,0 +1,35 @@
+{
+  "name": "highlightjs-xsharp",
+  "version": "0.0.1",
+  "description": "highlight.js syntax definition for X# programming language",
+  "license": "MIT",
+  "main": "src/languages/xsharp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InfomindsAg/highlightjs-xsharp.git"
+  },
+  "keywords": [
+    "x#",
+    "xsharp",
+    "highlight.js",
+    "highlightjs",
+    "syntax"
+  ],
+  "author": "Patrick Kruselburger <pkruselburger@gmail.com>",
+  "contributors": [
+    "Volkmar Rigo <volkmar@rigo.bz>"
+  ],
+  "maintainers": [
+    "Volkmar Rigo <volkmar@rigo.bz>"
+  ],
+  "bugs": {
+    "url": "https://github.com/InfomindsAg/highlightjs-xsharp/issues"
+  },
+  "homepage": "https://github.com/InfomindsAg/highlightjs-xsharp#readme",
+  "directories": {
+    "test": "test"
+  }
+}

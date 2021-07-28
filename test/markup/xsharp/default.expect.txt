@@ -1,0 +1,56 @@
+<span class="hljs-comment">/*
+This example shows various new expression formats
+*/</span>
+<span class="hljs-keyword">using</span> System.Collections.Generic
+
+<span class="hljs-keyword">Function</span> <span class="hljs-title function_">Start</span>() <span class="hljs-keyword">as</span> <span class="hljs-type">void</span>
+	<span class="hljs-keyword">VAR</span> oNone   := Person{<span class="hljs-string">&quot;No&quot;</span>, <span class="hljs-string">&quot;Parent&quot;</span>}
+	
+	<span class="hljs-keyword">FOREACH</span> <span class="hljs-keyword">VAR</span> oValue <span class="hljs-keyword">in</span> GetList()
+		<span class="hljs-keyword">if</span> oValue <span class="hljs-keyword">IS</span> <span class="hljs-type">STRING</span>                 <span class="hljs-comment">// Value IS Type</span>
+			? (<span class="hljs-type">String</span>) oValue
+		<span class="hljs-keyword">ELSEIF</span> oValue <span class="hljs-keyword">IS</span> <span class="hljs-type">INT</span>
+			? (<span class="hljs-type">Int</span>) oValue
+		<span class="hljs-keyword">ELSEIF</span> oValue <span class="hljs-keyword">IS</span> DateTime
+			? (DateTime) oValue
+		<span class="hljs-keyword">ELSEIF</span> oValue <span class="hljs-keyword">IS</span> Person
+			<span class="hljs-keyword">LOCAL</span> oPerson <span class="hljs-keyword">as</span> Person
+			oPerson := (Person) oValue
+			? oPerson:FirstName, oPerson:LastName
+			<span class="hljs-comment">// Value DEFAULT Value2 . When Value IS NULL then Value2 will be used</span>
+			oPerson := oPerson:Parent <span class="hljs-keyword">DEFAULT</span> oNone      
+			? <span class="hljs-string">&quot;Parent: &quot;</span>, oPerson:FirstName, oPerson:LastName
+		<span class="hljs-keyword">ENDIF</span>
+	<span class="hljs-keyword">NEXT</span>
+	<span class="hljs-keyword">LOCAL</span> oEmptyPerson <span class="hljs-keyword">as</span> Person
+	<span class="hljs-keyword">LOCAL</span> sName <span class="hljs-keyword">as</span> <span class="hljs-type">STRING</span>
+	oEmptyPerson := GetAPerson()
+	sName   := oEmptyPerson?:FirstName         <span class="hljs-comment">// Conditional Access: This will not crash, even when Person is a NULL_OBJECT</span>
+	? sName <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&quot;None&quot;</span>
+	Console.ReadLine()
+	<span class="hljs-keyword">RETURN</span>
+	
+<span class="hljs-keyword">FUNCTION</span> <span class="hljs-title function_">GetList</span>() <span class="hljs-keyword">AS</span> List&lt;<span class="hljs-type">OBJECT</span>&gt;
+	<span class="hljs-keyword">VAR</span> aList := List&lt;<span class="hljs-type">OBJECT</span>&gt;{}
+	aList:<span class="hljs-keyword">Add</span>(DateTime.Now)
+	aList:<span class="hljs-keyword">Add</span>(<span class="hljs-string">&quot;abcdefg&quot;</span>)
+	aList:<span class="hljs-keyword">Add</span>(123456)
+	<span class="hljs-keyword">VAR</span> oPerson := Person{<span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-string">&quot;Doe&quot;</span>}
+	aList:<span class="hljs-keyword">Add</span>(oPerson)
+	<span class="hljs-keyword">VAR</span> oChild := Person{<span class="hljs-string">&quot;Jane&quot;</span>, <span class="hljs-string">&quot;Doe&quot;</span>}
+	oChild:Parent := oPerson
+	aList:<span class="hljs-keyword">Add</span>(oChild)
+	<span class="hljs-keyword">RETURN</span> aList
+	
+<span class="hljs-keyword">CLASS</span> <span class="hljs-title class_">Person</span>
+	<span class="hljs-keyword">EXPORT</span> FirstName   <span class="hljs-keyword">AS</span> <span class="hljs-type">STRING</span>
+	<span class="hljs-keyword">EXPORT</span> LastName     <span class="hljs-keyword">as</span> <span class="hljs-type">STRING</span>
+	<span class="hljs-keyword">EXPORT</span> Parent     <span class="hljs-keyword">as</span> Person
+	<span class="hljs-keyword">CONSTRUCTOR</span>(First <span class="hljs-keyword">as</span> <span class="hljs-type">STRING</span>, Last <span class="hljs-keyword">as</span> <span class="hljs-type">STRING</span>)
+		FirstName   := First
+		LastName   := Last
+		
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">CLASS</span>
+	
+<span class="hljs-keyword">FUNCTION</span> <span class="hljs-title function_">GetAPerson</span>() <span class="hljs-keyword">as</span> Person
+	<span class="hljs-keyword">RETURN</span> <span class="hljs-literal">NULL_OBJECT</span>
