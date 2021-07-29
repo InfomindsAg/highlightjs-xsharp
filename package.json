@@ -31,5 +31,6 @@
   "homepage": "https://github.com/InfomindsAg/highlightjs-xsharp#readme",
   "directories": {
     "test": "test"
-  }
+  },
+  "dependencies": {}
 }

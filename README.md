@@ -20,7 +20,7 @@ Simply load the module after loading Highlight.js. You'll use the minified versi
 If you're using Node / Webpack / Rollup / Browserify, etc, simply require the language module, then register it with Highlight.js.
 
 ```javascript
-var hljs = require('highlightjs');
+var hljs = require('highlight.js');
 var hljsXsharp = require('highlightjs-xsharp');
 
 hljs.registerLanguage("xsharp", hljsXsharp);
