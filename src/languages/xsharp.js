@@ -59,7 +59,7 @@ export default function(hljs) {
       {
         // Preprocessor directives and symbol literals
         className: 'meta string',
-        begin: /#[_a-zA-Z_0-9]+/
+        begin: /\B#\w+\b/
       },
       hljs.COMMENT('//', '$', {
         contains: [
@@ -85,7 +85,7 @@ export default function(hljs) {
         match: [
           /\b(CLASS|DELEGATE|ENUM|INTERFACE|STRUCTURE|UNION|VOSTRUCT)/,
           /[^\S\r\n]/,
-          /[_a-zA-Z_0-9]+/
+          /\w+/
         ],
         className: {
           1: 'keyword',
@@ -97,7 +97,7 @@ export default function(hljs) {
         match: [
           /\b(FUNC|FUNCTION|METHOD|PROC|PROCEDURE)/,
           /[^\S\r\n]/,
-          /[_a-zA-Z_0-9]+/
+          /\w+/
         ],
         className: {
           1: 'keyword',
