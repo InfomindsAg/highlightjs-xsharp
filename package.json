@@ -1,6 +1,6 @@
 {
   "name": "highlightjs-xsharp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "highlight.js syntax definition for X# programming language",
   "license": "MIT",
   "main": "src/languages/xsharp.js",
