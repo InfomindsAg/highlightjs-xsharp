@@ -26,7 +26,7 @@ module.exports = function(hljs) {
   ];
 
   const STRINGS = {
-    className: 'string',
+    scope: 'string',
     variants: [
       {
         begin: '"',
@@ -53,12 +53,10 @@ module.exports = function(hljs) {
     case_insensitive: true,
     keywords: KEYWORDS,
     contains: [
-      hljs.inherit(STRINGS, {
-        className: 'string'
-      }),
+      STRINGS,
       {
         // Preprocessor directives and symbol literals
-        className: 'meta string',
+        scope: 'meta string',
         begin: /\B#\w+\b/
       },
       hljs.COMMENT('//', '$', {
@@ -87,7 +85,7 @@ module.exports = function(hljs) {
           /[^\S\r\n]/,
           /\w+/
         ],
-        className: {
+        scope: {
           1: 'keyword',
           3: 'title.class'
         }
@@ -99,7 +97,7 @@ module.exports = function(hljs) {
           /[^\S\r\n]/,
           /\w+/
         ],
-        className: {
+        scope: {
           1: 'keyword',
           3: 'title.function'
         }
