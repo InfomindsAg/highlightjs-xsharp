@@ -4,7 +4,7 @@ This example shows various new expression formats
 using System.Collections.Generic
 
 Function Start() as void
-	VAR oNone   := Person{"No", "Parent"}
+	VAR oNone   := Person{"NoEscape\", "Parent"}
 	
 	FOREACH VAR oValue in GetList()
 		if oValue IS STRING                 // Value IS Type

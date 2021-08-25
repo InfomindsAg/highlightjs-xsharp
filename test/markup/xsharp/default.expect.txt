@@ -4,7 +4,7 @@ This example shows various new expression formats
 <span class="hljs-keyword">using</span> System.Collections.Generic
 
 <span class="hljs-keyword">Function</span> <span class="hljs-title function_">Start</span>() <span class="hljs-keyword">as</span> <span class="hljs-type">void</span>
-	<span class="hljs-keyword">VAR</span> oNone   := Person{<span class="hljs-string">&quot;No&quot;</span>, <span class="hljs-string">&quot;Parent&quot;</span>}
+	<span class="hljs-keyword">VAR</span> oNone   := Person{<span class="hljs-string">&quot;NoEscape\&quot;</span>, <span class="hljs-string">&quot;Parent&quot;</span>}
 	
 	<span class="hljs-keyword">FOREACH</span> <span class="hljs-keyword">VAR</span> oValue <span class="hljs-keyword">in</span> GetList()
 		<span class="hljs-keyword">if</span> oValue <span class="hljs-keyword">IS</span> <span class="hljs-type">STRING</span>                 <span class="hljs-comment">// Value IS Type</span>
