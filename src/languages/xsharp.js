@@ -31,7 +31,6 @@ module.exports = function(hljs) {
       {
         begin: '"',
         end: '"',
-        contains: [hljs.BACKSLASH_ESCAPE],
         relevance: 0
       },
       {
